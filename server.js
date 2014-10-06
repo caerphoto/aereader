@@ -114,7 +114,7 @@ function categorizeReviewLinks(reviewLinks) {
 function parseReviewContent(html, url) {
     var $page = $.load(html);
     var title = "<h2>" + $page(".post-title").text() +
-        "</h2><h3> <a href=\"" + url + "\">(original page)</a></h3>";
+        "</h2><h3> <a href=\"" + url + "\">(original review page)</a></h3>";
     return title + $page(".post-body").html();
 }
 

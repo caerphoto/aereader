@@ -32,6 +32,14 @@ p.intro {
     font-style: italic;
 }
 
+a {
+    color: #8e2323;
+}
+
+a:visited {
+    color: #560001;
+}
+
 ul, li {
     margin: 0;
     padding: 0;
@@ -63,7 +71,8 @@ nav span {
     width: 1.1em;
 }
 
-nav a {
+nav a,
+nav a:visited {
     color: #fff;
     text-decoration: none;
 }
