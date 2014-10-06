@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title= pageTitle
+    link(href='http://fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic' rel='stylesheet' type='text/css')
+    link(href="main.css" rel="stylesheet")
+  body
+    h1= pageTitle
+
+    p.intro
+      | A simple web app that makes it easier to browse Tim Brayton’s
+      | excellent film reviews from 
+      a(href="http://antagonie.blogspot.com/") Antagony & Ecstasy
+      | .
+
+    nav#sections
+      ul
+        - each section in sections
+          if section.firstChar === activeSection
+            li.active
+              a(href=section.firstChar)= section.firstChar
+          else
+            li
+              a(href=section.firstChar)= section.firstChar
+
+    #mainContent
+
+      #reviewLinks
+        ul
+          - each link in sections[activeSection].links
+            li
+              a(href=link.url)
+                | #{link.title}
+              |  (#{link.year})
+
+      #review
+
+    script.
+      var SECTIONS = !{sectionsJSON};
+
+    script(src="main.js")

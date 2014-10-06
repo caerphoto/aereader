@@ -1,0 +1,14 @@
+{
+  "name": "aereader",
+  "description": "Web app for presenting Antagonie & Ecstasy film reviews.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "4.x",
+    "body-parser": "1.9.x",
+    "request": "2.45.x",
+    "jade": "1.7.x",
+    "cheerio": "0.17.x"
+  }
+}
+
