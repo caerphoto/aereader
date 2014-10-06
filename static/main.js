@@ -50,13 +50,23 @@ function renderReview(html) {
     var elReview = $("#review")[0];
 
     elReview.innerHTML = html;
+
 }
 
 function fetchReviewText(url) {
     var xhr = new XMLHttpRequest();
     var elReview = $("#review")[0];
+    var titlePos;
+    var windowPos;
 
     elReview.className = "loading";
+
+    titlePos = $("#review")[0].offsetTop;
+    windowPos = window.pageYOffset || document.documentElement.scrollTop;
+    if (windowPos > titlePos) {
+        window.scrollTo(0, titlePos);
+    }
+
 
     xhr.addEventListener("load", function () {
         elReview.className = "";

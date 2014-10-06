@@ -111,9 +111,10 @@ function categorizeReviewLinks(reviewLinks) {
     return sections;
 }
 
-function parseReviewContent(html) {
+function parseReviewContent(html, url) {
     var $page = $.load(html);
-    var title = "<h2>" + $page(".post-title").text() + "</h2>";
+    var title = "<h2>" + $page(".post-title").text() +
+        "</h2><h3> <a href=\"" + url + "\">(original page)</a></h3>";
     return title + $page(".post-body").html();
 }
 
@@ -125,7 +126,7 @@ function fetchReviewContent(url, callback) {
             console.log(err);
         }
 
-        reviewContent = parseReviewContent(html);
+        reviewContent = parseReviewContent(html, url);
         if (typeof callback === "function") {
             callback(reviewContent);
         }
