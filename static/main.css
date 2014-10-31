@@ -1,13 +1,13 @@
 html {
-    background: #ccc;
+    background-color: #eff2f4;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background: #fffaf0;
+    background-color: #fff;
     font-family: "Merriweather", "Candara", "Georgia", serif;
-    font-size: 18px;
+    font-size: 17px;
     color: #444;
     line-height: 1.4;
     max-width: 900px;
@@ -15,6 +15,7 @@ body {
     padding: 2em 2em 3em;
     overflow-x: hidden;
     overflow-y: scroll;
+    box-shadow: 0 1px 8px -3px rgba(40, 65, 100, 0.1);
 }
 
 h1 {
@@ -33,11 +34,15 @@ p.intro {
 }
 
 a {
-    color: #8e2323;
+    color: #0084d1;
 }
 
 a:visited {
-    color: #560001;
+    color: #ab45d0;
+}
+
+a:hover {
+    color: #3eb8ff;
 }
 
 ul, li {
@@ -55,11 +60,11 @@ nav li {
     list-style: none;
     display: inline-block;
     margin: 0 1px 1px 0;
-    background: #8e2323;
+    background: #0084d1;
 }
 
-nav li.active {
-    background: #e7bdb9;
+ li.active {
+    background: #3eb8ff;
 }
 
 nav a,
@@ -79,14 +84,14 @@ nav a:visited {
 
 nav a:hover {
     background-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
 }
 
 nav li.active a {
-    color: #000;
+    color: #fff;
 }
 
 #mainContent {
-    background: #fffaf0;
     overflow-y: hidden;
     overflow-x: visible;
 }
@@ -110,9 +115,11 @@ nav li.active a {
     float: left;
     width: 70%;
     margin-left: 30%;
-    padding: 0 1em;
+    padding: 1em 1em 0;
+    line-height: 1.5;
 }
 
 #review.loading {
     opacity: 0.5;
+    background-color: rgba(255, 255, 255, 0.5);
 }
