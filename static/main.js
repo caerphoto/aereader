@@ -46,11 +46,60 @@ function setActiveLink(section, links) {
     window.location.hash = link.getAttribute("href");
 }
 
+function getTextNodes(root) {
+    var nodes = [];
+    var node;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+
+    while (walker.nextNode()) {
+        node = walker.currentNode;
+        if (node.parentNode.nodeName !== "CODE" &&
+                node.parentNode.nodeName !== "STYLE") {
+
+            nodes.push(walker.currentNode);
+        }
+    }
+
+    return nodes;
+}
+
+function transformText(root) {
+    var replacements = [
+        { r: /``/g, s: "“" },
+        { r: /''/g, s: "”" },
+
+        // Order of these is imporant – opening quotes need to be done first.
+        { r: /(^|\s)`/g, s: "$1‘" },
+        { r: /(^|\s)"/g, s: "$1“" }, // ldquo
+        { r: /"/g,       s: "”" },   // rdquo
+
+        { r: /(^|\s)'/g, s: "$1‘" }, // lsquo
+        { r: /'/g,       s: "’" },   // rsquo
+
+        { r: /---/g, s: "—" }, // em dash
+        { r: /--/g,  s: "–" }, // en dash
+
+        { r: /\.\.\./g, s: "…" } // hellip
+    ];
+    var textNodes = getTextNodes(root || window.document);
+
+    textNodes.forEach(function (node) {
+        var text = node.nodeValue;
+
+        replacements.forEach(function (r) {
+            text = text.replace(r.r, r.s);
+        });
+
+        node.nodeValue = text;
+    });
+}
+
 function renderReview(html) {
     var elReview = $("#review")[0];
 
     elReview.innerHTML = html;
 
+    transformText(elReview);
 }
 
 function fetchReviewText(url) {
