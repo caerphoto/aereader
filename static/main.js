@@ -76,8 +76,9 @@ function transformText(root) {
         { r: /(^|\s)'/g, s: "$1‘" }, // lsquo
         { r: /'/g,       s: "’" },   // rsquo
 
-        { r: /---/g, s: "—" }, // em dash
-        { r: /--/g,  s: "–" }, // en dash
+        { r: /---/g, s: "—" },  // em dash
+        { r: /--/g,  s: "–" },  // en dash
+        { r: / - /g, s: " – "}, // en dash
 
         { r: /\.\.\./g, s: "…" } // hellip
     ];
