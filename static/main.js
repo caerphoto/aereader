@@ -81,10 +81,28 @@ function transformText(root) {
 
         { r: /\.\.\./g, s: "…" } // hellip
     ];
+    var inlineElements = [
+        "A",
+        "SPAN",
+        "EM",
+        "I",
+        "STRONG",
+        "B"
+    ];
     var textNodes = getTextNodes(root || window.document);
 
     textNodes.forEach(function (node) {
         var text = node.nodeValue;
+        var prev = node.previousSibling;
+
+        // Insert null character before node text if node immediately follows an
+        // inline node, to handle cases like:
+        // Link to <a href="blog.com">person</a>'s blog.
+        // This prevents the apostrophe being incorrectly replaced with an
+        // opening single quote.
+        if (prev && inlineElements.indexOf(prev.nodeName) !== -1) {
+            text = "\u0000" + text;
+        }
 
         replacements.forEach(function (r) {
             text = text.replace(r.r, r.s);
