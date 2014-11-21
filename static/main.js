@@ -38,7 +38,7 @@ function renderLinksForSection(section) {
 
 function setActiveLink(section, links) {
     var elPrevious = links.querySelector(".active");
-    var link = links.querySelector("[href^=" + section + "]");
+    var link = links.querySelector('[href^="' + section + '"]');
 
     elPrevious.className = "";
     link.parentNode.className = "active";

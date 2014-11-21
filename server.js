@@ -74,7 +74,7 @@ function fetchReviews(callback) {
 }
 
 function categorizeReviewLinks(reviewLinks) {
-    var sectionNames = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    var sectionNames = "1ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
     var sections = {};
 
     sectionNames.forEach(function (section) {
@@ -94,7 +94,7 @@ function categorizeReviewLinks(reviewLinks) {
         }
 
         if (/\d/.test(firstChar)) {
-            firstChar = "#";
+            firstChar = "1";
         }
 
         // Some translated titles have a separate link element for the
@@ -136,10 +136,10 @@ function fetchReviewContent(url, callback) {
 function resIndex(req, res) {
     fetchReviews(function (reviewLinks) {
         var sections = categorizeReviewLinks(reviewLinks);
-        var section = req.params.section ? req.params.section : "#";
+        var section = req.params.section ? req.params.section : "1";
 
         if (!sections.hasOwnProperty(section)) {
-            section = "#";
+            section = "1";
         }
 
         if (req.params.format === "json") {
