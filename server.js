@@ -57,7 +57,7 @@ function readFile(filename, callback) {
 */
 
 function fetchReviews(callback) {
-    var REVIEWS_URL = "http://movieglut.blogspot.co.uk/2008/09/all-reviews-by-title.html";
+    var REVIEWS_URL = "http://movieglut.blogspot.com/2010/01/reviews-by-title.html";
 
     request(REVIEWS_URL, function (err, res, html) {
         var reviewLinks;
